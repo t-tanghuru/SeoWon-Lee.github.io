@@ -1,1 +1,767 @@
-Hello GIthub Pages!
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name | Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #f7faff;
+      --bg-soft: #eef4ff;
+      --surface: rgba(255, 255, 255, 0.9);
+      --surface-strong: #ffffff;
+      --surface-blue: #f3f8ff;
+      --text: #1e2a3b;
+      --text-soft: #536277;
+      --heading: #142033;
+      --line: #dbe7f8;
+      --accent: #7aaeff;
+      --accent-strong: #4f8df8;
+      --accent-soft: #e8f1ff;
+      --shadow: 0 18px 40px rgba(98, 130, 180, 0.12);
+      --shadow-soft: 0 10px 24px rgba(98, 130, 180, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max-width: 1140px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      background:
+        radial-gradient(circle at top left, rgba(122, 174, 255, 0.18), transparent 26%),
+        radial-gradient(circle at top right, rgba(168, 205, 255, 0.18), transparent 24%),
+        linear-gradient(180deg, #fbfdff 0%, #f4f8ff 54%, #eef5ff 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(219, 231, 248, 0.9);
+      box-shadow: 0 4px 16px rgba(151, 175, 214, 0.06);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.08rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--heading);
+    }
+
+    .logo span {
+      color: var(--accent-strong);
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px 18px;
+    }
+
+    .menu a {
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      padding: 8px 0;
+      transition: 0.2s ease;
+    }
+
+    .menu a:hover {
+      color: var(--accent-strong);
+    }
+
+    .hero {
+      padding: 86px 0 46px;
+      scroll-margin-top: 96px;
+    }
+
+    .intro-card,
+    .paper-item,
+    .project-item,
+    .study-item,
+    .award-item,
+    .timeline-item,
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid rgba(219, 231, 248, 0.95);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .intro-card {
+      padding: 40px 42px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .intro-left {
+      text-align: center;
+    }
+
+    .profile-photo {
+      width: 200px;
+      height: auto;
+      border-radius: 18px;
+      overflow: hidden;
+      margin: 0 auto 22px;
+      border: 3px solid #e8f1ff;
+      box-shadow: 0 14px 28px rgba(108, 153, 232, 0.18);
+      transition: all 0.25s ease;
+      background: #ffffff;
+    }
+
+    .profile-photo:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 36px rgba(108, 153, 232, 0.24);
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      color: var(--heading);
+      word-break: keep-all;
+      white-space: nowrap;
+    }
+
+    .info-role {
+      color: var(--text-soft);
+      margin-bottom: 30px;
+      font-size: 1rem;
+    }
+
+    .intro-text {
+      margin-bottom: 30px;
+    }
+
+    .intro-text p {
+      margin: 0 0 16px;
+      color: var(--text-soft);
+      font-size: 1.04rem;
+      line-height: 1.85;
+    }
+
+    .intro-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight {
+      color: #4f8df8;
+      font-weight: 700;
+      background: #eef5ff;
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+
+    .info-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0;
+    }
+
+    .info-list li {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 14px 0;
+      border-bottom: 1px solid #e5eefb;
+      color: var(--text-soft);
+      font-size: 0.98rem;
+    }
+
+    .info-list li strong {
+      color: var(--heading);
+      font-weight: 700;
+    }
+
+    section {
+      padding: 20px 0 30px;
+      scroll-margin-top: 96px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(1.5rem, 2vw, 2.3rem);
+      letter-spacing: -0.03em;
+      color: var(--heading);
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--text-soft);
+      max-width: 620px;
+    }
+
+    .muted {
+      color: var(--text-soft);
+    }
+
+    .papers,
+    .projects,
+    .study-grid,
+    .awards,
+    .contact-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .study-grid,
+    .contact-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .papers,
+    .projects,
+    .awards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .paper-item,
+    .project-item,
+    .study-item,
+    .award-item,
+    .contact-card {
+      padding: 24px;
+    }
+
+    .paper-item,
+    .project-item,
+    .study-item,
+    .award-item,
+    .contact-card,
+    .timeline-item {
+      transition: all 0.25s ease;
+    }
+
+    .paper-item:hover,
+    .project-item:hover,
+    .study-item:hover,
+    .award-item:hover,
+    .contact-card:hover,
+    .timeline-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 50px rgba(120, 150, 200, 0.18);
+      border-color: #bcd6ff;
+    }
+
+    .project-item h3,
+    .paper-item h3,
+    .study-item h3,
+    .award-item h3,
+    .contact-card h3,
+    .timeline-item h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      color: var(--heading);
+    }
+
+    .meta {
+      font-size: 0.9rem;
+      color: var(--accent-strong);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .paper-links,
+    .project-links,
+    .study-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .chip-link {
+      font-size: 0.9rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f6faff;
+      border: 1px solid #dbe8fb;
+      color: #4d6f9e;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .project-item:hover .chip-link,
+    .paper-item:hover .chip-link {
+      background: #eaf3ff;
+      border-color: #bcd6ff;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 0.98rem;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #79adff, #a9ccff);
+      color: #ffffff;
+      box-shadow: 0 12px 22px rgba(104, 152, 233, 0.22);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-item {
+      padding: 20px 22px;
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 18px;
+      align-items: start;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .timeline-date {
+      color: var(--accent-strong);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      padding: 28px 0 40px;
+      color: #73839a;
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 980px) {
+      .intro-grid,
+      .papers,
+      .projects,
+      .study-grid,
+      .awards,
+      .contact-grid,
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-left {
+        text-align: center;
+      }
+
+      h1 {
+        white-space: normal;
+      }
+
+      .info-list li {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        padding-top: 54px;
+      }
+
+      .intro-card,
+      .paper-item,
+      .project-item,
+      .study-item,
+      .award-item,
+      .timeline-item,
+      .contact-card {
+        padding: 20px;
+      }
+
+      .profile-photo {
+        width: 132px;
+        height: 132px;
+      }
+
+      .menu {
+        gap: 8px 12px;
+      }
+
+      .menu a {
+        font-size: 0.9rem;
+      }
+
+      .section-heading {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#home" class="logo">YourName<span>.</span>Portfolio</a>
+
+      <nav class="menu">
+        <a href="#home">Introduction</a>
+        <a href="#publications">Publications & Presentations</a>
+        <a href="#projects">Projects</a>
+        <a href="#study">Studies</a>
+        <a href="#awards">Awards · Qualifications</a>
+        <a href="#activities">Activities</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="intro-card">
+          <div class="intro-grid">
+            <div class="intro-left">
+              <div class="profile-photo">
+                <img src="profile.jpg" alt="profile photo">
+              </div>
+
+              <h1>Your Name</h1>
+              <div class="info-role">Your Role</div>
+            </div>
+
+            <div class="intro-right">
+              <div class="intro-text">
+                <p>
+                  Write a short introduction here.
+                </p>
+
+                <p>
+                  My interests include
+                  <span class="highlight">Interest 1</span>,
+                  <span class="highlight">Interest 2</span>,
+                  <span class="highlight">Interest 3</span>, and
+                  <span class="highlight">Interest 4</span>.
+                </p>
+              </div>
+
+              <ul class="info-list">
+                <li>
+                  <strong>Major</strong>
+                  <span>Major Name</span>
+                </li>
+
+                <li>
+                  <strong>Interest</strong>
+                  <span>Interest 1, Interest 2, Interest 3</span>
+                </li>
+
+                <li>
+                  <strong>E-Mail</strong>
+                  <span>your_email@example.com</span>
+                </li>
+
+                <li>
+                  <strong>GitHub</strong>
+                  <span>github.com/your-github-id</span>
+                </li>
+              </ul>
+
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="#contact">Resume</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Publications & Presentations</h2>
+          </div>
+        </div>
+
+        <div class="papers">
+          <article class="paper-item">
+            <div class="meta">Paper / Presentation</div>
+            <h3>Publication or Presentation Title</h3>
+            <p class="muted">Conference / Journal / Role / Year</p>
+            <p>
+              Write a short description of this publication or presentation.
+            </p>
+
+            <div class="paper-links">
+              <a class="chip-link" href="#" target="_blank">PDF</a>
+              <a class="chip-link" href="#" target="_blank">Poster</a>
+              <a class="chip-link" href="#" target="_blank">Slides</a>
+            </div>
+          </article>
+
+          <article class="paper-item">
+            <div class="meta">Paper / Presentation</div>
+            <h3>Publication or Presentation Title</h3>
+            <p class="muted">Conference / Journal / Role / Year</p>
+            <p>
+              Write a short description of this publication or presentation.
+            </p>
+
+            <div class="paper-links">
+              <a class="chip-link" href="#" target="_blank">PDF</a>
+              <a class="chip-link" href="#" target="_blank">Poster</a>
+              <a class="chip-link" href="#" target="_blank">Slides</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Projects</h2>
+          </div>
+        </div>
+
+        <div class="projects">
+          <article class="project-item">
+            <div class="meta">Project</div>
+            <h3>Project Title</h3>
+            <p class="muted">
+              Write a short project summary here.
+            </p>
+
+            <div class="project-links">
+              <a class="chip-link" href="#" target="_blank">GitHub</a>
+              <a class="chip-link" href="#" target="_blank">Demo</a>
+            </div>
+          </article>
+
+          <article class="project-item">
+            <div class="meta">Project</div>
+            <h3>Project Title</h3>
+            <p class="muted">
+              Write a short project summary here.
+            </p>
+
+            <div class="project-links">
+              <a class="chip-link" href="#" target="_blank">GitHub</a>
+              <a class="chip-link" href="#" target="_blank">Demo</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="study">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Studies</h2>
+          </div>
+        </div>
+
+        <div class="study-grid">
+          <article class="study-item">
+            <h3>Study Topic 1</h3>
+            <p class="muted">Write a short description here.</p>
+
+            <div class="study-links">
+              <a class="chip-link" href="#" target="_blank">Files</a>
+            </div>
+          </article>
+
+          <article class="study-item">
+            <h3>Study Topic 2</h3>
+            <p class="muted">Write a short description here.</p>
+
+            <div class="study-links">
+              <a class="chip-link" href="#" target="_blank">Files</a>
+            </div>
+          </article>
+
+          <article class="study-item">
+            <h3>Study Topic 3</h3>
+            <p class="muted">Write a short description here.</p>
+
+            <div class="study-links">
+              <a class="chip-link" href="#" target="_blank">Files</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="awards">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Awards · Qualifications</h2>
+          </div>
+        </div>
+
+        <div class="awards">
+          <article class="award-item">
+            <div class="meta">Awards / Honors</div>
+            <h3>Award or Qualification Title</h3>
+            <p class="muted">
+              Organization / Year
+            </p>
+          </article>
+
+          <article class="award-item">
+            <div class="meta">Awards / Honors</div>
+            <h3>Award or Qualification Title</h3>
+            <p class="muted">
+              Organization / Year
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="activities">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Activities</h2>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-date">YYYY.MM ~ YYYY.MM</div>
+            <div>
+              <h3>Activity Title</h3>
+              <p class="muted">Write a short description here.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">YYYY.MM ~ YYYY.MM</div>
+            <div>
+              <h3>Activity Title</h3>
+              <p class="muted">Write a short description here.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">YYYY.MM ~ YYYY.MM</div>
+            <div>
+              <h3>Activity Title</h3>
+              <p class="muted">Write a short description here.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Contact</h2>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <article class="contact-card">
+            <h3>Email</h3>
+            <p class="muted">your_email@example.com</p>
+          </article>
+
+          <article class="contact-card">
+            <h3>GitHub</h3>
+            <p class="muted">github.com/your-github-id</p>
+          </article>
+
+          <article class="contact-card">
+            <h3>LinkedIn</h3>
+            <p class="muted">linkedin.com/in/your-id</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Your Name. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
